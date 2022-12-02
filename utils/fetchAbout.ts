@@ -1,7 +1,7 @@
 import { AboutType } from "../typedefinition";
 
 export const fetchAbout = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getAbout`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getAbouts`);
 
     const data = await res.json();
     const about: AboutType[] = data.about;
