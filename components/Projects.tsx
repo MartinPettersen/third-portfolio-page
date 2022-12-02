@@ -2,10 +2,13 @@ import React from 'react'
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Project from './Project';
+import { ProjectType } from '../typedefinition';
 
-type Props = {}
+type Props = {
+  projects: ProjectType[]
+}
 
-const Projects = (props: Props) => {
+const Projects = ({projects}: Props) => {
   return (
     <motion.div 
     initial={{
@@ -23,12 +26,14 @@ const Projects = (props: Props) => {
     
 
     
-          <div className="w-full flex space-x-4 overflow-x-scroll p-8 snap-x snap-mandatory">
+          <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
             {/*project card*/}
-            <Project />
-            <Project />
-            <Project />
-            <Project />
+
+            {projects.map((project: ProjectType) => (
+
+              <Project project={project}/>
+            ))}
+ 
 
           </div>
     

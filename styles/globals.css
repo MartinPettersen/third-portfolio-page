@@ -12,4 +12,30 @@
     .logo {
         @apply px-6 py-1 text-[#62A0EA] rounded-full uppercase text-lg  transition-all
     }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .show-scrollbar::-webkit-scrollbar {
+        display: inside;
+    }
+
+    .show-scrollbar {
+        -ms-overflow-style: auto;
+        scrollbar-width: auto;
+    }
+
+    .custom-scrollbar-y {
+        @apply scrollbar scrollbar-track-[#27282b] scrollbar-thumb-orange-400 
+    }
+
+    .custom-scrollbar-x {
+        @apply scrollbar scrollbar-track-[#202124] scrollbar-thumb-orange-400 
+    }
 }

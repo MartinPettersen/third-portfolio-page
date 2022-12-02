@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { EducationType } from "../typedefinition";
 
-type Props = {};
+type Props = {
+  education: EducationType[]
+};
 
-const Education = (props: Props) => {
+const Education = ({education}: Props) => {
   return (
     <div>
       {/*<h2 className="flex flex-col relative text-center">Martin Pettersen</h2> */}
@@ -26,14 +29,11 @@ const Education = (props: Props) => {
             className="px-10"
           >
             <h4 className="text-xl py-3  text-[#62A0EA]">
-              Bachelor in Informatics: Programming and Networks(180sp)
-              University of Oslo
+              {education[0].secondBach}
             </h4>
             <p>
-              Programming and data communication. Programmering of machines.
-              Create systems, programs and applications. Develop computer
-              systems, program systems and algorithms.Understanding how software
-              and operating systems work
+            {education[0].secondBachInfo}
+
             </p>
           </motion.div>
           <motion.div
@@ -51,14 +51,12 @@ const Education = (props: Props) => {
             className="px-10"
           >
             <h4 className="text-xl py-3 text-[#62A0EA]">
-              Bachelor in Multimedia technology and design(180sp) University of
-              Agder, Grimstad
+            {education[0].firstBach}
+
             </h4>
             <p>
-              Theoretical and practical foundation in technology and multimedia.
-              Such as graphic design,, 3D-visualization and animation, video and
-              audio production, image processing, webdesign and interactive
-              media design.
+            {education[0].firstBachInfo}
+
             </p>
           </motion.div>
         </div>

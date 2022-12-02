@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { AboutType } from "../typedefinition";
 
-type Props = {};
+type Props = {
+  about: AboutType[]
+};
 
-const About = (props: Props) => {
+const About = ({about}: Props) => {
+
   return (
     <div>
       {/*<h2 className="flex flex-col relative text-center">Martin Pettersen</h2> */}
@@ -23,7 +27,7 @@ const About = (props: Props) => {
             duration: 2,
           }}
         >
-          <h2>Martin Pettersen</h2>
+          <h2>{about[0].name}</h2>
         </motion.div>
         <motion.div
           initial={{
@@ -40,9 +44,7 @@ const About = (props: Props) => {
 
         >
           <p className="px-5">
-            I have 2 bachelor’s one in Informatics: Programming and Networks
-            (Informatikk: Programmering og nettverk) and one in Multimedia
-            technology and design (Multimedieteknologi og design).
+          {about[0].aboutInfo}
           </p>
         </motion.div>
 
@@ -60,11 +62,13 @@ const About = (props: Props) => {
             duration: 2,
           }}
         >
+          {/* 
           <Link href="#education" >
             <button className="border px-3 py-1 border-[#62A0EA] text-[#62A0EA] rounded-full transition hover:border-orange-400 hover:text-orange-400">
               Education
             </button>
           </Link>
+          */}
           </motion.div>
       </div>
     </div>
