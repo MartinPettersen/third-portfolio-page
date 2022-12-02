@@ -31,7 +31,7 @@ const Projects = ({projects}: Props) => {
 
             {projects.map((project: ProjectType) => (
 
-              <Project project={project}/>
+              <Project key={project._id} project={project}/>
             ))}
  
 

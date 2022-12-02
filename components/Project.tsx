@@ -31,8 +31,8 @@ const Project = ({ project }: Props) => {
         </h3>
         <p className="text-sm text-center">{project.projectInfo}</p>
         <p className="text-sm">
-          {project.githubLinks[0] !== undefined ?  (project.githubLinks.map((link) => (
-            <Link
+          {project.githubLinks[0] !== undefined ?  (project.githubLinks.map((link, index) => (
+            <Link key={index}
               className="text-[#62A0EA] underline hover:text-orange-400"
               href={link}
             >
