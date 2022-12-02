@@ -41,8 +41,8 @@ const Project = ({ project }: Props) => {
           ))) : <></> }
         </p>
         <p className="text-sm">
-          {project.githubLinks[0] !== undefined ?  (project.hostLinks.map((link) => (
-            <Link
+          {project.githubLinks[0] !== undefined ?  (project.hostLinks.map((link, index) => (
+            <Link key={index}
               className="text-[#62A0EA] underline hover:text-orange-400"
               href={link}
             >
@@ -53,8 +53,8 @@ const Project = ({ project }: Props) => {
         <p>Tech:</p>
         <div className="my-2 text-sm">
           <ul className="list-disc space-y-3 ml-5 text-[#62A0EA] ">
-            {project.tech.map((tech) => (
-              <li>
+            {project.tech.map((tech, index) => (
+              <li key={index}>
                 <p>{tech}</p>
               </li>
             ))}
