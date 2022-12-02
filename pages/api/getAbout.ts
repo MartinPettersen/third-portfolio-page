@@ -14,7 +14,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const about: AboutType[] = await sanityClient.fetch(query);
+
+  const rest = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getAbouts`);
+
+  const data = await rest.json();
+  const about: AboutType[] = data.about;
+
+
 
   res.status(200).json({ about })
 }
