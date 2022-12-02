@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const education: EducationType[] = await fetchEducation();
   const project: ProjectType[] = await fetchProject();
 
+
 return {
   props: {
     about,
