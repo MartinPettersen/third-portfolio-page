@@ -7,5 +7,5 @@ export const fetchEducation = async () => {
     const education: EducationType[] = data.education;
     
     // console.log(education);
-    return educationInfo.education;
+    return education;
 }

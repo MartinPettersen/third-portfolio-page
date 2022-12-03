@@ -5,7 +5,7 @@ export const fetchProject = async () => {
    
     const data = await res.json();
     const project: ProjectType[] = data.project;
-    
-    console.log(project);
-    return projectInfo.project;
+
+    console.log(data.project);
+    return project;
 }
