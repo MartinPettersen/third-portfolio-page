@@ -18,7 +18,7 @@ type Props = {
 }
 
 
-export default function Home({about, education, project}: Props) {
+export default function Home(props: Props) {
   return (
     <div className="bg-[#202124] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0">
       <Head>
@@ -27,13 +27,23 @@ export default function Home({about, education, project}: Props) {
       </Head>
       <Navbar />
       <section id="portfolio" className="snap-start">
+        <Projects />
+        {/*
         <Projects projects={project} />
+        */}
       </section>
       <section id="about" className="snap-center">
+        <About />
+      {/*
         <About  about={about}/>
+        */}
       </section >
       <section id="education" className="snap-center">
-        <Education education={education} />
+        <Education />
+      {/*
+        <Education education={education} />        
+      */}
+      
       </section >
       
       {/* Contact */}
@@ -45,6 +55,7 @@ export default function Home({about, education, project}: Props) {
   );
 }
 
+/*
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const about: AboutType[] = await fetchAbout();
@@ -61,3 +72,4 @@ return {
   revalidate: 1000,
 }
 }
+*/

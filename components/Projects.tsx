@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Project from './Project';
 import { ProjectType } from '../typedefinition';
+import projectInfo from "../fake_database/projectText.json"
 
 type Props = {
-  projects: ProjectType[]
+  
 }
 
-const Projects = ({projects}: Props) => {
+const Projects = (props: Props) => {
   return (
     <motion.div 
     initial={{
@@ -29,7 +30,7 @@ const Projects = ({projects}: Props) => {
           <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
             {/*project card*/}
 
-            {projects.map((project: ProjectType) => (
+            {projectInfo.project.map((project: any) => (
 
               <Project key={project._id} project={project}/>
             ))}

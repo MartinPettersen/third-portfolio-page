@@ -2,12 +2,13 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import { AboutType } from "../typedefinition";
+import aboutInfo from "../fake_database/aboutText.json"
 
 type Props = {
-  about: AboutType[]
+
 };
 
-const About = ({about}: Props) => {
+const About = (props: Props) => {
 
   return (
     <div>
@@ -27,7 +28,7 @@ const About = ({about}: Props) => {
             duration: 2,
           }}
         >
-          <h2>{about[0].name}</h2>
+          <h2>{aboutInfo.about[0].name}</h2>
         </motion.div>
         <motion.div
           initial={{
@@ -44,7 +45,7 @@ const About = ({about}: Props) => {
 
         >
           <p className="px-5">
-          {about[0].aboutInfo}
+          {aboutInfo.about[0].aboutInfo}
           </p>
         </motion.div>
 
