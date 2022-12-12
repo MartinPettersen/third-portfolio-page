@@ -26,7 +26,9 @@ export default function Home(props: Props) {
         <meta name="description" content="Portfolio Page" />
       </Head>
       <Navbar />
+      
       <section id="portfolio" className="snap-start">
+        <p className="text-red-400">test {props.education[0].name}</p>
         <Projects />
         {/*
         <Projects projects={project} />
