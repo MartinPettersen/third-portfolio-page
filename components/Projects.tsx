@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Project from './Project';
 import { ProjectType } from '../typedefinition';
-import projectInfo from "../fake_database/projectText.json"
 
 type Props = {
+  project: ProjectType[];
   
 }
 
-const Projects = (props: Props) => {
+const Projects = ({project}: Props) => {
   return (
     <motion.div 
     initial={{
-        y: -500,
+        y: 500,
         opacity: 0,
       }}
       animate={{
@@ -30,7 +30,7 @@ const Projects = (props: Props) => {
           <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
             {/*project card*/}
 
-            {projectInfo.project.map((project: any) => (
+            {project.map((project: any) => (
 
               <Project key={project._id} project={project}/>
             ))}

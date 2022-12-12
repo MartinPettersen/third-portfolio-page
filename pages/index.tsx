@@ -14,11 +14,11 @@ import { fetchProject } from "../utils/fetchProject";
 type Props = {
   about: AboutType[];
   education: EducationType[];
-  project: ProjectType[]
+  project: ProjectType[];
 }
 
 
-export default function Home(props: Props) {
+export default function Home({about, education, project}: Props) {
   return (
     <div className="bg-[#202124] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0">
       <Head>
@@ -28,20 +28,20 @@ export default function Home(props: Props) {
       <Navbar />
       
       <section id="portfolio" className="snap-start">
-        <p className="text-red-400">test {props.education[0].name}</p>
-        <Projects />
+        <p className="text-red-400">test {education[0].name}</p>
+        <Projects project={project}/>
         {/*
         <Projects projects={project} />
         */}
       </section>
       <section id="about" className="snap-center">
-        <About />
+        <About about={about} />
       {/*
         <About  about={about}/>
         */}
       </section >
       <section id="education" className="snap-center">
-        <Education />
+        <Education education={education}/>
       {/*
         <Education education={education} />        
       */}

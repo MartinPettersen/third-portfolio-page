@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { EducationType } from "../typedefinition";
-import educationInfo from "../fake_database/educationText.json"
 type Props = {
+  education: EducationType[];
 
 };
 
-const Education = (props: Props) => {
+const Education = ({education}: Props) => {
   return (
     <div>
       {/*<h2 className="flex flex-col relative text-center">Martin Pettersen</h2> */}
@@ -29,10 +29,10 @@ const Education = (props: Props) => {
             className="px-10"
           >
             <h4 className="text-xl py-3  text-[#62A0EA]">
-              {educationInfo.education[0].secondBach}
+              {education[0].secondBach}
             </h4>
             <p>
-            {educationInfo.education[0].secondBachInfo}
+            {education[0].secondBachInfo}
 
             </p>
           </motion.div>
@@ -51,11 +51,11 @@ const Education = (props: Props) => {
             className="px-10"
           >
             <h4 className="text-xl py-3 text-[#62A0EA]">
-            {educationInfo.education[0].firstBach}
+            {education[0].firstBach}
 
             </h4>
             <p>
-            {educationInfo.education[0].firstBachInfo}
+            {education[0].firstBachInfo}
 
             </p>
           </motion.div>
