@@ -28,7 +28,6 @@ export default function Home({about, education, project}: Props) {
       <Navbar />
       
       <section id="portfolio" className="snap-start">
-        <p className="text-red-400">test {education[0].name}</p>
         <Projects project={project}/>
         {/*
         <Projects projects={project} />
