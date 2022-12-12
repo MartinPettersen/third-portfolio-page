@@ -55,7 +55,7 @@ export default function Home(props: Props) {
   );
 }
 
-/*
+
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const about: AboutType[] = await fetchAbout();
@@ -72,4 +72,3 @@ return {
   revalidate: 1000,
 }
 }
-*/
