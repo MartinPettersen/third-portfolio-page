@@ -19,18 +19,20 @@ const Project = ({ project }: Props) => {
       {project.image !== undefined ?  (<Image
         loader={myLoader}
         src="landing1.jpg"
-        alt="Picture of the author"
+        alt="Picture of project"
         width={500}
         height={500}
         className="h-32 w-64 object-cover object-center mt-3 aspect-auto"
       />) : <></> }
 
-      <div className="m-4">
+      <div className="m-4 ">
         <h3 className="text-[#62A0EA] text-center mt-1 text-lg">
           {project.name}
         </h3>
-        <p className="text-sm text-center">{project.projectInfo}</p>
-        <p className="text-sm">
+        <p className="text-sm pt-4 pb-2 text-center">{project.projectInfo}</p>
+        <div className="p-4 flex flex-row justify-evenly items-center">
+
+        <p className="text-sm ">
           {project.githubLinks[0] !== undefined ?  (project.githubLinks.map((link, index) => (
             <Link key={index}
               className="text-[#62A0EA] underline hover:text-orange-400"
@@ -49,7 +51,10 @@ const Project = ({ project }: Props) => {
               Host Link
             </Link>
           ))) : <></> }
+          
         </p>
+        </div>
+
         <p>Tech:</p>
         <div className="my-2 text-sm">
           <ul className="list-disc space-y-3 ml-5 text-[#62A0EA] ">
