@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import About from "../components/About";
 import Education from "../components/Education";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import Projects from "../components/Projects";
 import styles from "../styles/Home.module.css";
 import { EducationType, ProjectType, AboutType } from "../typedefinition";
