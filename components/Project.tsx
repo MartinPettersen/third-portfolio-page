@@ -15,7 +15,7 @@ const Project = ({ project }: Props) => {
   }
 
   return (
-    <article className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] snap-center bg-[#191a1c] hover:border-orange-400 border-[#09090a] hover:bg-[#27282b]  overflow-hidden hover:custom-scrollbar-y ">
+    <article className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] snap-center bg-[#191a1c] transition duration-300 hover:border-orange-400 border-[#09090a] hover:bg-[#27282b]  overflow-hidden hover:custom-scrollbar-y ">
       {project.image !== undefined ?  (<Image
         loader={myLoader}
         src="landing1.jpg"

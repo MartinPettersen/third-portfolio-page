@@ -5,8 +5,15 @@ import Link from "next/link";
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const handleSCrollTo = (element: string) => {
+    const section = document.getElementById(element);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const [text, count] = useTypewriter({
-    words: ["Code", "JavaScript", "React", "NextJs"],
+    words: ["Code", "JavaScript", "React", "NextJs", "NodeJs"],
     loop: true,
     delaySpeed: 2000,
   });
@@ -26,7 +33,10 @@ const Navbar = (props: Props) => {
         }}
       >
         <div className="logo hidden md:inline-flex text-3xl tracking-[10px]">
-          <h2>{text}<span className="opacity-0">.</span></h2>
+          <h2>
+            {text}
+            <span className="opacity-0">.</span>
+          </h2>
         </div>
       </motion.div>
       <motion.div
@@ -43,20 +53,25 @@ const Navbar = (props: Props) => {
         }}
         className="flex flex-row items-center "
       >
-  
-        <Link href="#portfolio">
-          <button className="navButton">Portfolio</button>
-        </Link>
+        <button
+          onClick={() => handleSCrollTo("portfolio")}
+          className="navButton"
+        >
+          Portfolio
+        </button>
 
-        <Link href="#about">
-          <button className="navButton">About</button>
-        </Link>
+        <button onClick={() => handleSCrollTo("about")} className="navButton">
+          About
+        </button>
 
-        <Link href="#education">
-          <button className="navButton">Education</button>
-        </Link>
+        <button
+          onClick={() => handleSCrollTo("education")}
+          className="navButton"
+        >
+          Education
+        </button>
 
-      {/*
+        {/*
         <Link href="#blog">
           <button className="navButton">Blog</button>
         </Link>

@@ -29,21 +29,15 @@ export default function Home({about, education, project}: Props) {
       
       <section id="portfolio" className="snap-start">
         <Projects project={project}/>
-        {/*
-        <Projects projects={project} />
-        */}
+
       </section>
       <section id="about" className="snap-center">
         <About about={about} />
-      {/*
-        <About  about={about}/>
-        */}
+
       </section >
       <section id="education" className="snap-center">
         <Education education={education}/>
-      {/*
-        <Education education={education} />        
-      */}
+ 
       
       </section >
       
