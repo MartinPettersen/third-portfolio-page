@@ -6,6 +6,7 @@ import Image from "next/image";
 import { urlFor } from "../../sanity";
 import LinkButton from "./LinkButton";
 import GreyButton from "./GreyButton";
+import TechPlacard from "./TechPlacard";
 
 type Props = {
   project: ProjectType;
@@ -38,7 +39,7 @@ const Project = ({ project }: Props) => {
         </h3>
         <p className="text-sm pt-4 pb-2 text-center">{project.projectInfo}</p>
         <div className="p-4 flex flex-row justify-evenly items-center">
-          <div >
+          <div>
             {project.githubLinks[0] !== "" ? (
               project.githubLinks.map((link, index) => (
                 <LinkButton key={index} link={link}>
@@ -46,12 +47,10 @@ const Project = ({ project }: Props) => {
                 </LinkButton>
               ))
             ) : (
-              <GreyButton>
-                Github Link
-              </GreyButton>
+              <GreyButton>Github Link</GreyButton>
             )}
           </div>
-          <div >
+          <div>
             {project.hostLinks[0] !== "" ? (
               project.hostLinks.map((link, index) => (
                 <LinkButton key={index} link={link}>
@@ -59,9 +58,7 @@ const Project = ({ project }: Props) => {
                 </LinkButton>
               ))
             ) : (
-              <GreyButton>
-                Host Link
-              </GreyButton>
+              <GreyButton>Host Link</GreyButton>
             )}
           </div>
         </div>
@@ -71,7 +68,7 @@ const Project = ({ project }: Props) => {
           <ul className="list-disc space-y-3 ml-5 text-[#62A0EA] ">
             {project.tech.map((tech, index) => (
               <li key={index}>
-                <p>{tech}</p>
+                <TechPlacard>{tech}</TechPlacard>
               </li>
             ))}
           </ul>
