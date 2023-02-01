@@ -64,14 +64,10 @@ const Project = ({ project }: Props) => {
         </div>
 
         <p>Tech:</p>
-        <div className="my-2 text-sm">
-          <ul className="list-disc space-y-3 ml-5 text-[#62A0EA] ">
+        <div className="my-2 text-sm flex flex-wrap center-items justify-center">
             {project.tech.map((tech, index) => (
-              <li key={index}>
-                <TechPlacard>{tech}</TechPlacard>
-              </li>
+                <TechPlacard key={index}>{tech}</TechPlacard>
             ))}
-          </ul>
         </div>
       </div>
     </article>
