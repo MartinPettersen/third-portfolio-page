@@ -24,7 +24,7 @@ const About = ({about}: Props) => {
             opacity: 1,
           }}
           transition={{
-            duration: 2,
+            duration: 1.3,
           }}
         >
           <h2>{about[0].name}</h2>
@@ -39,7 +39,7 @@ const About = ({about}: Props) => {
             opacity: 1,
           }}
           transition={{
-            duration: 2,
+            duration: 1.3,
           }}
 
         >
@@ -48,28 +48,7 @@ const About = ({about}: Props) => {
           </p>
         </motion.div>
 
-        <motion.div
-        className="absolute bottom-28"
-          initial={{
-            y: 500,
-            opacity: 0,
-          }}
-          animate={{
-            y: 0,
-            opacity: 1,
-          }}
-          transition={{
-            duration: 2,
-          }}
-        >
-          {/* 
-          <Link href="#education" >
-            <button className="border px-3 py-1 border-[#62A0EA] text-[#62A0EA] rounded-full transition hover:border-orange-400 hover:text-orange-400">
-              Education
-            </button>
-          </Link>
-          */}
-          </motion.div>
+        
       </div>
     </div>
   );

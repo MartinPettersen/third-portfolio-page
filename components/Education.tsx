@@ -24,7 +24,7 @@ const Education = ({education}: Props) => {
               opacity: 1,
             }}
             transition={{
-              duration: 2,
+              duration: 1.3,
             }}
             className="px-10"
           >
@@ -46,7 +46,7 @@ const Education = ({education}: Props) => {
               opacity: 1,
             }}
             transition={{
-              duration: 2,
+              duration: 1.3,
             }}
             className="px-10"
           >

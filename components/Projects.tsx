@@ -1,18 +1,16 @@
-import React from 'react'
+import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Project from './Project';
-import { ProjectType } from '../typedefinition';
+import Project from "./project/Project";
+import { ProjectType } from "../typedefinition";
 
 type Props = {
   project: ProjectType[];
-  
-}
+};
 
-const Projects = ({project}: Props) => {
+const Projects = ({ project }: Props) => {
   return (
-    <motion.div 
-    initial={{
+    <motion.div
+      initial={{
         y: 500,
         opacity: 0,
       }}
@@ -23,23 +21,15 @@ const Projects = ({project}: Props) => {
       transition={{
         duration: 2,
       }}
-    className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth">
-    
-
-    
-          <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
-            {/*project card*/}
-
-            {project.map((project: any) => (
-
-              <Project key={project._id} project={project}/>
-            ))}
- 
-
-          </div>
-    
+      className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth"
+    >
+      <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
+        {project.map((project: any) => (
+          <Project key={project._id} project={project} />
+        ))}
+      </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
