@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
-import AnimatedNavButton from "./AnimatedNavButton";
-import AnimatedLogo from "./AnimatedLogo";
+import AnimatedNavButton from "./navbar/AnimatedNavButton";
+import AnimatedLogo from "./navbar/AnimatedLogo";
 type Props = {};
 
 const Navbar = (props: Props) => {
