@@ -19,8 +19,9 @@ type Props = {
 
 
 export default function Home({about, education, project}: Props) {
+
   return (
-    <div className="bg-[#202124] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0">
+    <div className="bg-[#202124] text-white h-screen overflow-y-scroll overflow-x-hidden z-0">
       <Head>
         <title>Portfolio Page</title>
         <meta name="description" content="Portfolio Page" />

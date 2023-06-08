@@ -21,9 +21,9 @@ const Projects = ({ project }: Props) => {
       transition={{
         duration: 2,
       }}
-      className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth"
+      className="h-screen flex relative overflow-hidden flex-col text-left  md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth "
     >
-      <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%] overflow-hidden hover:custom-scrollbar-x ">
+      <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[70%] h-[70%]  overflow-hidden hover:custom-scrollbar-x ">
         {project.map((project: any) => (
           <Project key={project._id} project={project} />
         ))}

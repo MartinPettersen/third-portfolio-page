@@ -7,10 +7,10 @@
 @layer components {
 
     .navButton {
-        @apply align-bottom px-4 py-4 text-[#62A0EA] uppercase text-lg  transition-all cursor-pointer hover:text-orange-400
+        @apply align-bottom px-4 py-4 text-[#77b1f7] uppercase text-lg  transition-all cursor-pointer hover:text-orange-400
     }
     .logo {
-        @apply px-6 py-1 text-[#62A0EA] rounded-full uppercase text-lg  transition-all
+        @apply px-6 py-1 text-[#77b1f7] rounded-full uppercase text-lg  transition-all
     }
 
     .no-scrollbar::-webkit-scrollbar {
