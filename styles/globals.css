@@ -38,4 +38,22 @@
     .custom-scrollbar-x {
         @apply scrollbar scrollbar-track-[#202124] scrollbar-thumb-orange-400 
     }
+
+    .shiny-light {
+        position: relative;
+        overflow: hidden;    
+      }
+      
+      .shiny-light::after {
+        content: '';
+        position: absolute;
+        width: 500px;
+        left: var(--x);
+        top: var(--y);
+        height: 500px;
+        opacity: 0.2;
+        background: radial-gradient(circle closest-side, #49cea8, transparent);
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
 }

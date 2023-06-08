@@ -10,16 +10,24 @@ import TechPlacard from "./TechPlacard";
 
 type Props = {
   project: ProjectType;
+  showProject: boolean;
+  setShowProject: Function;
 };
 
-const ViewProject = ({ project }: Props) => {
+const ViewProject = ({ project, showProject, setShowProject }: Props) => {
   const myLoader = () => {
     return `${urlFor(project.image).url()}`;
   };
 
   console.log(project.hostLinks[0]);
   return (
-    <article className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] snap-center bg-[#191a1c] transition duration-300 hover:border-orange-400 border-[#09090a] hover:bg-[#27282b]  overflow-hidden hover:custom-scrollbar-y ">
+    <div  className=" w-full h-full z-10 flex items-center justify-center backdrop-filter backdrop-brightness-50">
+      <div onClick={() => setShowProject(!showProject)} className=" z-500 fixed w-full h-full ">
+      </div>
+      <article  className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[800px] 
+    snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
+    overflow-hidden hover:custom-scrollbar-y relative">
+
       {project.image !== undefined ? (
         <Image
           loader={myLoader}
@@ -63,14 +71,19 @@ const ViewProject = ({ project }: Props) => {
           </div>
         </div>
 
-        <p>Tech:</p>
+        <div className="flex flex-wrap center-items justify-center">
+          <p>Tech</p>
+        </div>
         <div className="my-2 text-sm flex flex-wrap center-items justify-center">
             {project.tech.map((tech, index) => (
+
                 <TechPlacard key={index}>{tech}</TechPlacard>
+
             ))}
         </div>
       </div>
     </article>
+    </div>
   );
 };
 

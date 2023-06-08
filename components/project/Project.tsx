@@ -7,6 +7,8 @@ import { urlFor } from "../../sanity";
 import LinkButton from "./LinkButton";
 import GreyButton from "./GreyButton";
 import TechPlacard from "./TechPlacard";
+import { useEffect, useState } from "react";
+import ViewProject from "./ViewProject";
 
 type Props = {
   project: ProjectType;
@@ -17,9 +19,48 @@ const Project = ({ project }: Props) => {
     return `${urlFor(project.image).url()}`;
   };
 
+
+  const [showProject, setShowProject] = useState(false);
+  
+
+
+  const [mousePos, setMousePos] = useState({});
+
+  useEffect(() => {
+    const handleMouseMove = (e:any) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+      const x = 0 + e.pageX - e.target.offsetLeft ;
+      const y = 0 + e.pageY - e.target.offsetTop -90;
+      if (typeof e.target.style !== 'undefined'){
+        e.target.style.setProperty('--x', `${ x }px`)
+        e.target.style.setProperty('--y', `${ y }px`)
+      }
+
+    
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener(
+        'mousemove',
+        handleMouseMove
+      );
+    };
+  }, []);
+
   console.log(project.hostLinks[0]);
   return (
-    <article className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#09090a] hover:bg-[#27282b]  overflow-hidden hover:custom-scrollbar-y ">
+    <div>    { showProject ? 
+      <div className="w-full h-full fixed inset-0 z-50"><ViewProject project={project} setShowProject={setShowProject} showProject={showProject}/></div>
+      :
+    <article onClick={() => setShowProject(!showProject)} className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] md:h-[400px]  
+    snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
+    overflow-hidden hover:custom-scrollbar-y relative hover:shiny-light">
+      <span className="bg-red-400">
+
+        <p>({mousePos.x}, {mousePos.y})</p>
+      </span>
       {project.image !== undefined ? (
         <Image
           loader={myLoader}
@@ -38,30 +79,7 @@ const Project = ({ project }: Props) => {
           {project.name}
         </h3>
         <p className="text-sm pt-4 pb-2 text-center">{project.projectInfo}</p>
-        <div className="p-4 flex flex-row justify-evenly items-center">
-          <div>
-            {project.githubLinks[0] !== "" ? (
-              project.githubLinks.map((link, index) => (
-                <LinkButton key={index} link={link}>
-                  Github Link
-                </LinkButton>
-              ))
-            ) : (
-              <GreyButton>Github Link</GreyButton>
-            )}
-          </div>
-          <div>
-            {project.hostLinks[0] !== "" ? (
-              project.hostLinks.map((link, index) => (
-                <LinkButton key={index} link={link}>
-                  Host Link
-                </LinkButton>
-              ))
-            ) : (
-              <GreyButton>Host Link</GreyButton>
-            )}
-          </div>
-        </div>
+        
 
         <div className="flex flex-wrap center-items justify-center">
           <p>Tech</p>
@@ -75,6 +93,8 @@ const Project = ({ project }: Props) => {
         </div>
       </div>
     </article>
+    }
+    </div>
   );
 };
 
