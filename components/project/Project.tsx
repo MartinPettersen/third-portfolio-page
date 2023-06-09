@@ -22,8 +22,6 @@ const Project = ({ project }: Props) => {
 
   const [showProject, setShowProject] = useState(false);
   
-
-
   const [mousePos, setMousePos] = useState({});
 
   useEffect(() => {
@@ -31,9 +29,22 @@ const Project = ({ project }: Props) => {
       setMousePos({ x: e.clientX, y: e.clientY });
       const x = 0 + e.pageX - e.target.offsetLeft ;
       const y = 0 + e.pageY - e.target.offsetTop -90;
+      const x2 = e.layerX; // tilt
+      const y2= e.layerY; // tilt
+      const multiplier = 70; // tilt
+
+      const width = 400; // tilt
+      const height = 400; // tilt
+
+
+      const xRotate = multiplier * ((x - width / 2) / width) // tilt
+      const yRotate = -multiplier * ((y - height / 2) / height) // tilt
+
       if (typeof e.target.style !== 'undefined'){
         e.target.style.setProperty('--x', `${ x }px`)
         e.target.style.setProperty('--y', `${ y }px`)
+        e.target.style.setProperty('--xR', `${ xRotate }deg`) // tilt
+        e.target.style.setProperty('--yR', `${ yRotate }deg`) // tilt
       }
 
     
@@ -54,9 +65,9 @@ const Project = ({ project }: Props) => {
     <div>    { showProject ? 
       <div className="w-full h-full fixed inset-0 z-50"><ViewProject project={project} setShowProject={setShowProject} showProject={showProject}/></div>
       :
-    <article onClick={() => setShowProject(!showProject)} className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[400px] md:h-[400px]  
+    <article onClick={() => setShowProject(!showProject)} className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[360px] md:h-[400px]  
     snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
-    overflow-hidden hover:custom-scrollbar-y relative hover:shiny-light">
+    overflow-hidden hover:custom-scrollbar-y relative  hover:shiny-light">
       <span className="bg-red-400">
 
         <p>({mousePos.x}, {mousePos.y})</p>
@@ -78,7 +89,6 @@ const Project = ({ project }: Props) => {
         <h3 className="text-[#62A0EA] text-center mt-1 text-lg">
           {project.name}
         </h3>
-        <p className="text-sm pt-4 pb-2 text-center">{project.projectInfo}</p>
         
 
         <div className="flex flex-wrap center-items justify-center">
@@ -91,6 +101,8 @@ const Project = ({ project }: Props) => {
 
             ))}
         </div>
+        <p className="text-sm pt-4 pb-2 text-center ">{project.projectInfo}</p>
+
       </div>
     </article>
     }

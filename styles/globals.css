@@ -42,9 +42,9 @@
     .shiny-light {
         position: relative;
         overflow: hidden;    
-      }
+    }
       
-      .shiny-light::after {
+    .shiny-light::after {
         content: '';
         position: absolute;
         width: 500px;
@@ -55,5 +55,14 @@
         background: radial-gradient(circle closest-side, #49cea8, transparent);
         transform: translate(-50%, -50%);
         cursor: pointer;
-      }
+        
+    }
+
+    .tilt {
+        transition: all 0.1s ease;
+        cursor: pointer;
+        perspective: 500px;
+        transform: rotateX(var(--xR)) rotateY(var(--yR));
+
+    }
 }
