@@ -2,12 +2,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import Project from "./project/Project";
 import { ProjectType } from "../typedefinition";
-
+import { useState } from "react";
 type Props = {
   project: ProjectType[];
 };
 
 const Projects = ({ project }: Props) => {
+
+  const [skill, setSkill] = useState("");
+
+
+  const checkIfContains = (tech: any) => {
+    if (skill === ""){
+      return tech;
+    } 
+    else if (skill === tech) {
+      return tech;
+    }
+
+  }
+
   return (
     <motion.div
       initial={{

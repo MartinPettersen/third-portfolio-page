@@ -36,7 +36,6 @@ const Project = ({ project }: Props) => {
       const width = 400; // tilt
       const height = 400; // tilt
 
-
       const xRotate = multiplier * ((x - width / 2) / width) // tilt
       const yRotate = -multiplier * ((y - height / 2) / height) // tilt
 
@@ -68,10 +67,7 @@ const Project = ({ project }: Props) => {
     <article onClick={() => setShowProject(!showProject)} className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[360px] md:h-[400px]  
     snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
     overflow-hidden hover:custom-scrollbar-y relative  hover:shiny-light">
-      <span className="bg-red-400">
 
-        <p>({mousePos.x}, {mousePos.y})</p>
-      </span>
       {project.image !== undefined ? (
         <Image
           loader={myLoader}

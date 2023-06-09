@@ -26,7 +26,7 @@ export default function Home({about, education, project}: Props) {
         <title>Portfolio Page</title>
         <meta name="description" content="Portfolio Page" />
       </Head>
-      <Navbar />
+      <Navbar project={project}/>
       
       <section id="portfolio" className="snap-start">
         <Projects project={project}/>

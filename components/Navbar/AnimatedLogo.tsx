@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
+import { ProjectType } from "../../typedefinition";
+import { useState } from "react";
+type Props = {
+  project: ProjectType[];
+};
 
-type Props = {};
+const AnimatedLogo = ({ project }: Props) => {
+  
+  const [techList, setTechList] = useState([""]);
+  
+  const getUnique = (value:any, index:any, array:any) => {
+    return array.indexOf(value) === index;
+  }
 
-const AnimatedLogo = (props: Props) => {
+  const getTech = () => {
+    const tempList:any = [];
+    return project.map((project: any) => (tempList.concat(project.tech))).flat();
+    
+  }
+
+  useEffect(() => {
+    setTechList(getTech());
+
+    // setTechList(techList.concat(getTech()));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  const combinedList = () => {
+    return techList
+    // return ["Code","Portfolio:", "JavaScript", "React", "NextJs", "NodeJs"];
+  }
   const [text, count] = useTypewriter({
-    words: ["Code", "JavaScript", "React", "NextJs", "NodeJs"],
+    words: ["Martin's","Code","Portfolio",...techList],
     loop: true,
     delaySpeed: 1500,
   });

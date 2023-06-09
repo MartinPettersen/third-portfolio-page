@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
 import AnimatedNavButton from "./Navbar/AnimatedNavButton";
 import AnimatedLogo from "./Navbar/AnimatedLogo";
-type Props = {};
+import { ProjectType } from "../typedefinition";
 
-const Navbar = (props: Props) => {
+type Props = {
+  project: ProjectType[];
+};
+
+const Navbar = ({ project }: Props) => {
   const handleScrollTo = (element: string) => {
     const section = document.getElementById(element);
     if (section) {
@@ -16,7 +20,7 @@ const Navbar = (props: Props) => {
   return (
     <nav className="sticky top-0 flex items-start justify-between max-w-7xl mx-auto z-20  xl:items-center p-6 ">
       
-      <AnimatedLogo />
+      <AnimatedLogo project={project}/>
       {/* navbuttons below */}
       <div className="flex flex-row items-center ">
         <AnimatedNavButton
