@@ -58,9 +58,14 @@
         
     }
 
+    .shiny_nav {
+        background:radial-gradient(circle closest-side, #ce49a8, transparent);
+    }
+
     .tilt {
-        transition: all 0.1s ease;
+        transition: all 0.0s ease;
         cursor: pointer;
+        scale: 1.02;
         perspective: 500px;
         transform: rotateX(var(--xR)) rotateY(var(--yR));
 

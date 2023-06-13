@@ -12,9 +12,10 @@ import ViewProject from "./ViewProject";
 
 type Props = {
   project: ProjectType;
+  delay: number;
 };
 
-const Project = ({ project }: Props) => {
+const Project = ({ project, delay }: Props) => {
   const myLoader = () => {
     return `${urlFor(project.image).url()}`;
   };
@@ -24,6 +25,24 @@ const Project = ({ project }: Props) => {
   
   const [mousePos, setMousePos] = useState({});
 
+  /*
+  const handleScroll = () => {
+    const position = window.scrollY;
+    console.log("---");
+    console.log(window.scrollY);
+    console.log("---");
+
+    setScrollY(position);
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  },[])
+*/
+
   useEffect(() => {
     const handleMouseMove = (e:any) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -31,7 +50,9 @@ const Project = ({ project }: Props) => {
       const y = 0 + e.pageY - e.target.offsetTop -90;
       const x2 = e.layerX; // tilt
       const y2= e.layerY; // tilt
-      const multiplier = 70; // tilt
+      const multiplier = 40; // tilt
+
+      //update scrolling
 
       const width = 400; // tilt
       const height = 400; // tilt
@@ -61,12 +82,27 @@ const Project = ({ project }: Props) => {
 
   console.log(project.hostLinks[0]);
   return (
+    <motion.div
+    initial={{
+      y: 500,
+      opacity: 0,
+    }}
+    animate={{
+      y: 0,
+      opacity: 1,
+    }}
+    transition={{
+      duration: 1.4,
+      delay: delay,
+    }}
+
+  >
     <div>    { showProject ? 
       <div className="w-full h-full fixed inset-0 z-50"><ViewProject project={project} setShowProject={setShowProject} showProject={showProject}/></div>
       :
-    <article onClick={() => setShowProject(!showProject)} className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[360px] md:h-[400px]  
-    snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
-    overflow-hidden hover:custom-scrollbar-y relative  hover:shiny-light">
+    <article onClick={() => setShowProject(!showProject)} className="flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[360px] md:h-[400px]  
+    snap-center bg-[#1c191b] transition duration-300   hover:bg-[#27282b]  
+    overflow-hidden hover:custom-scrollbar-y relative rounded-xl hover:tilt hover:shiny-light shadow-lg">
 
       {project.image !== undefined ? (
         <Image
@@ -82,14 +118,12 @@ const Project = ({ project }: Props) => {
       )}
 
       <div className="m-4 ">
-        <h3 className="text-[#62A0EA] text-center mt-1 text-lg">
+        <h3 className="text-[#ffffff] text-center mt-1 text-xl underline">
           {project.name}
         </h3>
         
 
-        <div className="flex flex-wrap center-items justify-center">
-          <p>Tech</p>
-        </div>
+       
         <div className="my-2 text-sm flex flex-wrap center-items justify-center">
             {project.tech.map((tech, index) => (
 
@@ -103,6 +137,7 @@ const Project = ({ project }: Props) => {
     </article>
     }
     </div>
+    </motion.div>
   );
 };
 

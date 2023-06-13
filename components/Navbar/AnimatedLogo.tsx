@@ -27,10 +27,7 @@ const AnimatedLogo = ({ project }: Props) => {
     // setTechList(techList.concat(getTech()));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  const combinedList = () => {
-    return techList
-    // return ["Code","Portfolio:", "JavaScript", "React", "NextJs", "NodeJs"];
-  }
+  
   const [text, count] = useTypewriter({
     words: ["Martin's","Code","Portfolio",...techList],
     loop: true,

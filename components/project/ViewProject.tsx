@@ -25,7 +25,7 @@ const ViewProject = ({ project, showProject, setShowProject }: Props) => {
       <div onClick={() => setShowProject(!showProject)} className=" z-500 fixed w-full h-full ">
       </div>
       <article  className="border flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] h-[70%] md:w-[1200px] 
-    snap-center bg-[#1c191b] transition duration-300 hover:border-orange-400 border-[#090a0a] hover:bg-[#27282b]  
+    snap-center bg-[#27282b] transition duration-300 hover:border-orange-600 rounded-xl border-[#090a0a] hover:bg-[#393a3e]  
     overflow-hidden hover:custom-scrollbar-y relative">
 
       {project.image !== undefined ? (
