@@ -103,7 +103,7 @@ const Project = ({ project, delay }: Props) => {
       <div className="w-full h-full fixed inset-0 z-50"><ViewProject project={project} setShowProject={setShowProject} showProject={showProject}/></div>
       :
     <article onClick={() => setShowProject(!showProject)} className="flex flex-col items-center  space-y-5 flex-shrink-0 w-[200px] md:w-[360px] md:h-[400px]  
-    snap-center bg-[#1c191b] transition duration-300   hover:bg-[#27282b]  
+    snap-start bg-[#1c191b] transition duration-300   hover:bg-[#27282b]  
     overflow-hidden hover:custom-scrollbar-y relative rounded-xl hover:tilt hover:shiny-light shadow-lg">
 
       {project.image !== undefined ? (
@@ -113,7 +113,7 @@ const Project = ({ project, delay }: Props) => {
           alt="Picture of project"
           width={500}
           height={500}
-          className="h-32 w-64 object-cover object-center mt-3 aspect-auto"
+          className="h-32 w-64 object-cover object-center mt-3 aspect-auto shadow-lg"
         />
       ) : (
         <></>

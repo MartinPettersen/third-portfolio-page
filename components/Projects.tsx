@@ -53,7 +53,7 @@ const Projects = ({ project }: Props) => {
         ))}
   */
   return (
-    <div className="h-screen flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
+    <div className="h-screen  flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
       <motion.div
         initial={{
           x: -500,
@@ -69,7 +69,7 @@ const Projects = ({ project }: Props) => {
       >
         <div
           onClick={() => onClickLeft()}
-          className=" text-[#77b1f7] pb-16 opacity-30 hover:opacity-80 hover:text-orange-400 text-9xl hover:cursor-pointer"
+          className={` text-[#77b1f7] pb-16 ${lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"}  hover:text-orange-400 text-9xl hover:cursor-pointer`}
         >
           {"<"}
         </div>
@@ -102,7 +102,7 @@ const Projects = ({ project }: Props) => {
     >
       <div
         onClick={() => onClickRight()}
-        className=" text-[#77b1f7] pb-16 opacity-30 hover:opacity-80 hover:text-orange-400 text-9xl hover:cursor-pointer"
+        className={` text-[#77b1f7] pb-16 ${upperLimit === project.length ? "opacity-5" : "opacity-30 hover:opacity-80"}  hover:text-orange-400 text-9xl hover:cursor-pointer`}
       >
         {">"}
       </div>
