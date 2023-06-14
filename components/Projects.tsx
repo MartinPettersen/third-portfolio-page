@@ -20,7 +20,7 @@ const Projects = ({ project }: Props) => {
       setLowerLimit(0);
       setUpperLimit(2);
     } else {
-      setUpperLimit(lowerLimit);
+      setUpperLimit(lowerLimit-1);
       setLowerLimit(lowerLimit - 3);
     }
   };

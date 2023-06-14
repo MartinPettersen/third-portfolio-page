@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { EducationType } from "../typedefinition";
 type Props = {
@@ -7,12 +7,21 @@ type Props = {
 };
 
 const Education = ({education}: Props) => {
+
+  const elementRef = useRef(null);
+  /*
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [startPointX, setStartPointX] = useState(screenWidth / 2);
+  useEffect(() => {
+    setScreenWidth(elementRef.current.clientWidth);
+    setStartPointX(screenWidth / 2);
+  },[]);
+  */
   return (
     <div>
       {/*<h2 className="flex flex-col relative text-center">Martin Pettersen</h2> */}
-      <div className=" flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-5 justify-evenly mx-auto items-center ">
+      <div ref={elementRef} className=" flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-5 justify-evenly mx-auto items-center ">
         <h2 className="absolute top-28 tracking-[3px] text-3xl">Education</h2>
-
         <div className="flex">
           <motion.div
             initial={{

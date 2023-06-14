@@ -9,6 +9,8 @@ import GreyButton from "./GreyButton";
 import TechPlacard from "./TechPlacard";
 import { useEffect, useState } from "react";
 import ViewProject from "./ViewProject";
+import { useTypewriter } from "react-simple-typewriter";
+
 
 type Props = {
   project: ProjectType;
@@ -92,7 +94,7 @@ const Project = ({ project, delay }: Props) => {
       opacity: 1,
     }}
     transition={{
-      duration: 1.4,
+      duration: 1,
       delay: delay,
     }}
 
