@@ -1,39 +1,39 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 type Props = {
-    children: ReactNode,
-    delay: number,
-    link: string,
-    handleScrollTo: Function,
-}
+  children: ReactNode;
+  delay: number;
+  link: string;
+  handleScrollTo: Function;
+};
 
-const AnimatedNavButton = ({children, delay, link, handleScrollTo}: Props) => {
-
-  
+const AnimatedNavButton = ({
+  children,
+  delay,
+  link,
+  handleScrollTo,
+}: Props) => {
   return (
-    <motion.div 
-    initial={{
-      x: 500,
-      opacity: 0,
-    }}
-    animate={{
-      x: 0,
-      opacity: 1,
-    }}
-    transition={{
-      duration: 1.5,
-      delay: delay,
-    }}
+    <motion.div
+      initial={{
+        x: 500,
+        opacity: 0,
+      }}
+      animate={{
+        x: 0,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1.5,
+        delay: delay,
+      }}
     >
-      <button
-            onClick={() => handleScrollTo(link)}
-            className="navButton"
-          >
+      <button onClick={() => handleScrollTo(link)} className="navButton">
         {children}
-        </button>
+      </button>
     </motion.div>
-  )
-}
+  );
+};
 
-export default AnimatedNavButton
+export default AnimatedNavButton;

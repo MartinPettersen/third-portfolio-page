@@ -7,8 +7,7 @@ type Props = {
   about: AboutType[];
 };
 
-const About = ({about}: Props) => {
-
+const About = ({ about }: Props) => {
   return (
     <div>
       {/*<h2 className="flex flex-col relative text-center">Martin Pettersen</h2> */}
@@ -41,14 +40,9 @@ const About = ({about}: Props) => {
           transition={{
             duration: 1.3,
           }}
-
         >
-          <p className="px-5">
-          {about[0].aboutInfo}
-          </p>
+          <p className="px-5">{about[0].aboutInfo}</p>
         </motion.div>
-
-        
       </div>
     </div>
   );

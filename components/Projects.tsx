@@ -20,7 +20,7 @@ const Projects = ({ project }: Props) => {
       setLowerLimit(0);
       setUpperLimit(2);
     } else {
-      setUpperLimit(lowerLimit-1);
+      setUpperLimit(lowerLimit - 1);
       setLowerLimit(lowerLimit - 3);
     }
   };
@@ -69,7 +69,9 @@ const Projects = ({ project }: Props) => {
       >
         <div
           onClick={() => onClickLeft()}
-          className={` text-[#77b1f7] pb-16 ${lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"}  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+          className={` text-[#77b1f7] pb-16 ${
+            lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"
+          }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
         >
           {"<"}
         </div>
@@ -87,27 +89,30 @@ const Projects = ({ project }: Props) => {
           )
         )}
       </div>
-      <motion.div 
-    initial={{
-      x: 500,
-      opacity: 0,
-    }}
-    animate={{
-      x: 0,
-      opacity: 1,
-    }}
-    transition={{
-      duration: 1.5,
-    }}
-    >
-      <div
-        onClick={() => onClickRight()}
-        className={` text-[#77b1f7] pb-16 ${upperLimit === project.length ? "opacity-5" : "opacity-30 hover:opacity-80"}  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+      <motion.div
+        initial={{
+          x: 500,
+          opacity: 0,
+        }}
+        animate={{
+          x: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1.5,
+        }}
       >
-        {">"}
-      </div>
+        <div
+          onClick={() => onClickRight()}
+          className={` text-[#77b1f7] pb-16 ${
+            upperLimit === project.length
+              ? "opacity-5"
+              : "opacity-30 hover:opacity-80"
+          }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+        >
+          {">"}
+        </div>
       </motion.div>
-
     </div>
   );
 };

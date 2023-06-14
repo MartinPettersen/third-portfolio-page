@@ -19,8 +19,7 @@ const Navbar = ({ project }: Props) => {
 
   return (
     <nav className="sticky top-0 flex items-start justify-between max-w-7xl mx-auto z-20  xl:items-center p-6 ">
-      
-      <AnimatedLogo project={project}/>
+      <AnimatedLogo project={project} />
       {/* navbuttons below */}
       <div className="flex flex-row items-center ">
         <AnimatedNavButton

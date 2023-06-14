@@ -15,33 +15,27 @@ type Props = {
   about: AboutType[];
   education: EducationType[];
   project: ProjectType[];
-}
+};
 
-
-export default function Home({about, education, project}: Props) {
-
+export default function Home({ about, education, project }: Props) {
   return (
     <div className="bg-[#202124] text-white h-screen overflow-y-scroll overflow-x-hidden z-0">
       <Head>
         <title>Portfolio Page</title>
         <meta name="description" content="Portfolio Page" />
       </Head>
-      <Navbar project={project}/>
-      
-      <section id="portfolio" className="snap-start">
-        <Projects project={project}/>
+      <Navbar project={project} />
 
+      <section id="portfolio" className="snap-start">
+        <Projects project={project} />
       </section>
       <section id="about" className="snap-center">
         <About about={about} />
-
-      </section >
+      </section>
       <section id="education" className="snap-center">
-        <Education education={education}/>
- 
-      
-      </section >
-      
+        <Education education={education} />
+      </section>
+
       {/* Contact */}
       <section id="contact" className="snap-start"></section>
       {/* Skills*/}
@@ -51,20 +45,17 @@ export default function Home({about, education, project}: Props) {
   );
 }
 
-
-
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const about: AboutType[] = await fetchAbout();
   const education: EducationType[] = await fetchEducation();
   const project: ProjectType[] = await fetchProject();
 
-
-return {
-  props: {
-    about,
-    education,
-    project,
-  },
-  revalidate: 1000,
-}
-}
+  return {
+    props: {
+      about,
+      education,
+      project,
+    },
+    revalidate: 1000,
+  };
+};
