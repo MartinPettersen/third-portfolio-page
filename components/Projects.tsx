@@ -157,7 +157,7 @@ const Projects = ({ project }: Props) => {
                 duration: 1,
                 delay: 0.6 * 4,
               }}
-              className="text-xl"
+              className="text-xl text-[#77b1f7]"
             >
               Search Tags:
             </motion.div>
@@ -174,13 +174,13 @@ const Projects = ({ project }: Props) => {
                   }}
                   transition={{
                     duration: 1,
-                    delay: 0.6 * 5 + index * 0.2,
+                    delay: 0.6 * 5 + index * 0.1,
                   }}
                   onClick={() => addRemoveSearchItem(tech)}
                   className={`hover:cursor-pointer ${
                     searchList.includes(tech)
-                      ? `text-blue-500`
-                      : `text-white hover:text-orange-500`
+                      ? `text-[#77b1f7]`
+                      : `text-white hover:text-orange-400`
                   } `}
                   key={index}
                 >
