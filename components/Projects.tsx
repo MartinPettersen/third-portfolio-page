@@ -10,10 +10,61 @@ type Props = {
 
 const Projects = ({ project }: Props) => {
   const [skill, setSkill] = useState("");
+  const [techList, setTechList] = useState([""]);
+
+  const [searchList, setSearchList] = useState([""]);
+
+  const [projectList, setProjectList] = useState(project)
 
   const [upperLimit, setUpperLimit] = useState(2);
   const [lowerLimit, setLowerLimit] = useState(0);
   useEffect(() => {}, [upperLimit, lowerLimit]);
+
+
+  const getTech = () => {
+    const tempList: any = [];
+    return project.map((project: any) => tempList.concat(project.tech)).flat();
+  };
+
+  const projectFilter = (pro:any) => {
+    let contains = true;
+    searchList.map((tech) => {
+      console.log(`project ${pro.name}  tech ${tech} is: ${pro.tech.includes(tech)}`)
+      if (tech !== "" && !pro.tech.includes(tech)) {
+        contains =false;
+      }
+    })
+    return contains;
+  }
+
+  useEffect(() => {
+    if (searchList.length === 1){
+      setProjectList(project)
+    } else {
+      const tempList = project.filter(project => projectFilter(project))
+      setProjectList(tempList)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[searchList])
+
+  useEffect(() => {
+    setTechList([... new Set(getTech())]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const addRemoveSearchItem = (item:string) => {
+    if (searchList.includes(item)) {
+      const tempList = searchList.filter(tech => item !== tech)
+      setSearchList(tempList)
+    } else {
+
+      const tempList = [...searchList, item]  
+      setSearchList(tempList)
+    }
+
+
+  }
 
   const onClickLeft = () => {
     if (lowerLimit - 3 <= 0) {
@@ -25,10 +76,10 @@ const Projects = ({ project }: Props) => {
     }
   };
   const onClickRight = () => {
-    if (upperLimit === project.length) {
-    } else if (upperLimit + 3 > project.length) {
+    if (upperLimit === projectList.length) {
+    } else if (upperLimit + 3 > projectList.length) {
       setLowerLimit(lowerLimit + 3);
-      setUpperLimit(project.length);
+      setUpperLimit(projectList.length);
     } else {
       setLowerLimit(lowerLimit + 3);
       setUpperLimit(upperLimit + 3);
@@ -53,7 +104,8 @@ const Projects = ({ project }: Props) => {
         ))}
   */
   return (
-    <div className="h-screen  flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
+    <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-col max-w-full  justify-evenly mx-auto items-center scroll-smooth ">
+      <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
       <motion.div
         initial={{
           x: -500,
@@ -69,15 +121,20 @@ const Projects = ({ project }: Props) => {
       >
         <div
           onClick={() => onClickLeft()}
-          className={` text-[#77b1f7] pb-16 ${
+          className={` text-[#77b1f7] pb-60 ${
             lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"
           }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
         >
           {"<"}
         </div>
       </motion.div>
-      <div className=" flex space-x-4 p-8 snap-x snap-mandatory w-[80%] h-[70%]  overflow-hidden ">
-        {project.map((project: any, index: number) =>
+      <div>
+
+        
+      </div>
+      <div className=" flex flex-col space-y-8 snap-x snap-mandatory pt-8 pl-2 pr-2 h-full  overflow-hidden ">
+        <div className=" flex space-x-4  snap-x snap-mandatory justify-evenly mx-auto items-center">
+        {projectList.map((project: any, index: number) =>
           index >= lowerLimit && index <= upperLimit ? (
             <Project
               key={project._id}
@@ -88,6 +145,10 @@ const Projects = ({ project }: Props) => {
             <></>
           )
         )}
+        </div>
+        <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth">
+          {techList.map((tech, index) => <div onClick={() => addRemoveSearchItem(tech)} className={`hover:cursor-pointer ${searchList.includes(tech) ? `opacity-100`: `opacity-50 hover:opacity-80`} `} key={index}>{tech}</div>)}
+        </div>
       </div>
       <motion.div
         initial={{
@@ -104,7 +165,7 @@ const Projects = ({ project }: Props) => {
       >
         <div
           onClick={() => onClickRight()}
-          className={` text-[#77b1f7] pb-16 ${
+          className={` text-[#77b1f7] pb-60 ${
             upperLimit === project.length
               ? "opacity-5"
               : "opacity-30 hover:opacity-80"
@@ -113,6 +174,7 @@ const Projects = ({ project }: Props) => {
           {">"}
         </div>
       </motion.div>
+      </div>
     </div>
   );
 };
