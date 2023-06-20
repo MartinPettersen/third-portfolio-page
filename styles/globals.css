@@ -32,9 +32,8 @@
     }
 
     .custom-scrollbar-y {
-        @apply scrollbar scrollbar-track-[#27282b] scrollbar-thumb-orange-400 
+        @apply scrollbar scrollbar-track-[#27282b] scrollbar-thumb-[#333438]
     }
-
     .custom-scrollbar-x {
         @apply scrollbar scrollbar-track-[#202124] scrollbar-thumb-orange-400 
     }

@@ -1,7 +1,7 @@
 export default {
-  name: 'education',
-  title: 'Education',
-  type: 'document',
+  name: "education",
+  title: "Education",
+  type: "document",
   fields: [
     {
       name: "name",
@@ -11,24 +11,22 @@ export default {
     {
       name: "firstBach",
       title: "firstBach",
-      type: "string"
+      type: "string",
     },
     {
       name: "firstBachInfo",
       title: "firstBachInfo",
-      type: "string"
+      type: "string",
     },
     {
       name: "secondBach",
       title: "SecondBach",
-      type: "string"
+      type: "string",
     },
     {
       name: "secondBachInfo",
       title: "SecondBachInfo",
-      type: "string"
+      type: "string",
     },
   ],
-
-  
-}
+};

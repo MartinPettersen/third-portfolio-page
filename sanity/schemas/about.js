@@ -1,7 +1,7 @@
 export default {
-  name: 'about',
-  title: 'About',
-  type: 'document',
+  name: "about",
+  title: "About",
+  type: "document",
   fields: [
     {
       name: "name",
@@ -11,9 +11,7 @@ export default {
     {
       name: "aboutInfo",
       title: "AboutInfo",
-      type: "string"
-    }
+      type: "string",
+    },
   ],
-
-  
-}
+};

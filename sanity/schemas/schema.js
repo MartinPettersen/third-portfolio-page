@@ -1,17 +1,12 @@
-import createSchema from 'part:@sanity/base/schema-creator'
+import createSchema from "part:@sanity/base/schema-creator";
 
-import schemaTypes from 'all:part:@sanity/base/schema-type'
+import schemaTypes from "all:part:@sanity/base/schema-type";
 
-import project from './project'
-import education from './education'
-import about from './about'
+import project from "./project";
+import education from "./education";
+import about from "./about";
 
 export default createSchema({
-   name: 'default',
-  types: schemaTypes.concat([
-    education,
-    about,
-    project,
-
-  ]),
-})
+  name: "default",
+  types: schemaTypes.concat([education, about, project]),
+});
