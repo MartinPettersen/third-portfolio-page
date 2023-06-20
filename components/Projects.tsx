@@ -14,57 +14,57 @@ const Projects = ({ project }: Props) => {
 
   const [searchList, setSearchList] = useState([""]);
 
-  const [projectList, setProjectList] = useState(project)
+  const [projectList, setProjectList] = useState(project);
 
   const [upperLimit, setUpperLimit] = useState(2);
   const [lowerLimit, setLowerLimit] = useState(0);
   useEffect(() => {}, [upperLimit, lowerLimit]);
-
 
   const getTech = () => {
     const tempList: any = [];
     return project.map((project: any) => tempList.concat(project.tech)).flat();
   };
 
-  const projectFilter = (pro:any) => {
+  const projectFilter = (pro: any) => {
     let contains = true;
     searchList.map((tech) => {
-      console.log(`project ${pro.name}  tech ${tech} is: ${pro.tech.includes(tech)}`)
+      console.log(
+        `project ${pro.name}  tech ${tech} is: ${pro.tech.includes(tech)}`
+      );
       if (tech !== "" && !pro.tech.includes(tech)) {
-        contains =false;
+        contains = false;
       }
-    })
+    });
     return contains;
-  }
+  };
 
   useEffect(() => {
-    if (searchList.length === 1){
-      setProjectList(project)
+    if (searchList.length === 1) {
+      setProjectList(project);
     } else {
-      const tempList = project.filter(project => projectFilter(project))
-      setProjectList(tempList)
+      const tempList = project.filter((project) => projectFilter(project));
+      setProjectList(tempList);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[searchList])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchList]);
 
   useEffect(() => {
-    setTechList([... new Set(getTech())]);
+    setTechList([...new Set(getTech())]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const addRemoveSearchItem = (item:string) => {
+  const addRemoveSearchItem = (item: string) => {
     if (searchList.includes(item)) {
-      const tempList = searchList.filter(tech => item !== tech)
-      setSearchList(tempList)
+      const tempList = searchList.filter((tech) => item !== tech);
+      setSearchList(tempList);
     } else {
-
-      const tempList = [...searchList, item]  
-      setSearchList(tempList)
+      const tempList = [...searchList, item];
+      setSearchList(tempList);
     }
-
-
-  }
+    setLowerLimit(0);
+    setUpperLimit(2);
+  };
 
   const onClickLeft = () => {
     if (lowerLimit - 3 <= 0) {
@@ -106,74 +106,114 @@ const Projects = ({ project }: Props) => {
   return (
     <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-col max-w-full  justify-evenly mx-auto items-center scroll-smooth ">
       <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
-      <motion.div
-        initial={{
-          x: -500,
-          opacity: 0,
-        }}
-        animate={{
-          x: 0,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 1.5,
-        }}
-      >
-        <div
-          onClick={() => onClickLeft()}
-          className={` text-[#77b1f7] pb-60 ${
-            lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"
-          }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+        <motion.div
+          initial={{
+            x: -500,
+            opacity: 0,
+          }}
+          animate={{
+            x: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1.5,
+          }}
         >
-          {"<"}
+          <div
+            onClick={() => onClickLeft()}
+            className={` text-[#77b1f7] pb-60 ${
+              lowerLimit === 0 ? "opacity-5" : "opacity-30 hover:opacity-80"
+            }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+          >
+            {"<"}
+          </div>
+        </motion.div>
+        <div></div>
+        <div className=" flex flex-col space-y-8 snap-x snap-mandatory pt-8 pl-2 pr-2 h-full  overflow-hidden ">
+          <div className=" flex space-x-4  snap-x snap-mandatory justify-evenly mx-auto items-center">
+            {projectList.map((project: any, index: number) =>
+              index >= lowerLimit && index <= upperLimit ? (
+                <Project
+                  key={project._id}
+                  project={project}
+                  delay={0.6 * (index - lowerLimit + 1)}
+                />
+              ) : (
+                <></>
+              )
+            )}
+          </div>
+          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center">
+            <motion.div
+              initial={{
+                y: 500,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.6 * 4,
+              }}
+              className="text-xl"
+            >
+              Search Tags:
+            </motion.div>
+            <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth">
+              {techList.map((tech, index) => (
+                <motion.div
+                  initial={{
+                    y: 500,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    y: 0,
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.6 * 5 + index * 0.2,
+                  }}
+                  onClick={() => addRemoveSearchItem(tech)}
+                  className={`hover:cursor-pointer ${
+                    searchList.includes(tech)
+                      ? `text-blue-500`
+                      : `text-white hover:text-orange-500`
+                  } `}
+                  key={index}
+                >
+                  {tech}
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
-      </motion.div>
-      <div>
-
-        
-      </div>
-      <div className=" flex flex-col space-y-8 snap-x snap-mandatory pt-8 pl-2 pr-2 h-full  overflow-hidden ">
-        <div className=" flex space-x-4  snap-x snap-mandatory justify-evenly mx-auto items-center">
-        {projectList.map((project: any, index: number) =>
-          index >= lowerLimit && index <= upperLimit ? (
-            <Project
-              key={project._id}
-              project={project}
-              delay={0.6 * (index - lowerLimit + 1)}
-            />
-          ) : (
-            <></>
-          )
-        )}
-        </div>
-        <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth">
-          {techList.map((tech, index) => <div onClick={() => addRemoveSearchItem(tech)} className={`hover:cursor-pointer ${searchList.includes(tech) ? `opacity-100`: `opacity-50 hover:opacity-80`} `} key={index}>{tech}</div>)}
-        </div>
-      </div>
-      <motion.div
-        initial={{
-          x: 500,
-          opacity: 0,
-        }}
-        animate={{
-          x: 0,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 1.5,
-        }}
-      >
-        <div
-          onClick={() => onClickRight()}
-          className={` text-[#77b1f7] pb-60 ${
-            upperLimit === project.length
-              ? "opacity-5"
-              : "opacity-30 hover:opacity-80"
-          }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+        <motion.div
+          initial={{
+            x: 500,
+            opacity: 0,
+          }}
+          animate={{
+            x: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1.5,
+          }}
         >
-          {">"}
-        </div>
-      </motion.div>
+          <div
+            onClick={() => onClickRight()}
+            className={` text-[#77b1f7] pb-60 ${
+              upperLimit === project.length
+                ? "opacity-5"
+                : "opacity-30 hover:opacity-80"
+            }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
+          >
+            {">"}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
