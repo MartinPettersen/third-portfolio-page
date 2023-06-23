@@ -63,7 +63,7 @@ const Projects = ({ project }: Props) => {
       setSearchList(tempList);
     }
     setLowerLimit(0);
-    if ( projectList.length < 3){
+    if (projectList.length < 3) {
       setUpperLimit(projectList.length);
     }
     setUpperLimit(2);
@@ -144,7 +144,14 @@ const Projects = ({ project }: Props) => {
               ) : (
                 <></>
               )
-            )}{projectList.length === 0 ? <div className="text-orange-600 text-3xl">There is no project matching current combination of Tags</div> :<></> }
+            )}
+            {projectList.length === 0 ? (
+              <div className="text-orange-600 text-3xl">
+                There is no project matching current combination of Tags
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center">
             <motion.div
@@ -164,7 +171,7 @@ const Projects = ({ project }: Props) => {
             >
               Filter By Tags:
             </motion.div>
-            <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth grid grid-cols-8 gap-2">
+            <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth grid grid-cols-9 gap-2">
               {techList.map((tech, index) => (
                 <motion.div
                   initial={{
@@ -209,7 +216,7 @@ const Projects = ({ project }: Props) => {
           <div
             onClick={() => onClickRight()}
             className={` text-[#77b1f7] pb-60 ${
-              (upperLimit + 1) >= projectList.length
+              upperLimit + 1 >= projectList.length
                 ? "opacity-5"
                 : "opacity-30 hover:opacity-80"
             }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
