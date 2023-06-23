@@ -63,6 +63,9 @@ const Projects = ({ project }: Props) => {
       setSearchList(tempList);
     }
     setLowerLimit(0);
+    if ( projectList.length < 3){
+      setUpperLimit(projectList.length);
+    }
     setUpperLimit(2);
   };
 
@@ -206,7 +209,7 @@ const Projects = ({ project }: Props) => {
           <div
             onClick={() => onClickRight()}
             className={` text-[#77b1f7] pb-60 ${
-              upperLimit === project.length
+              (upperLimit + 1) >= projectList.length
                 ? "opacity-5"
                 : "opacity-30 hover:opacity-80"
             }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
