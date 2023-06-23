@@ -162,7 +162,7 @@ const Projects = ({ project }: Props) => {
               }}
               className="text-xl text-[#77b1f7]"
             >
-              Search Tags:
+              Filter By Tags:
             </motion.div>
             <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth">
               {techList.map((tech, index) => (
@@ -183,7 +183,7 @@ const Projects = ({ project }: Props) => {
                   className={`hover:cursor-pointer ${
                     searchList.includes(tech)
                       ? `text-[#77b1f7]`
-                      : `text-white hover:text-orange-400`
+                      : `text-white hover:text-orange-400 `
                   } `}
                   key={index}
                 >
