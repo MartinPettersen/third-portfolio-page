@@ -144,7 +144,7 @@ const Projects = ({ project }: Props) => {
               ) : (
                 <></>
               )
-            )}
+            )}{projectList.length === 0 ? <div className="text-orange-600 text-3xl">There is no project matching current combination of Tags</div> :<></> }
           </div>
           <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center">
             <motion.div
@@ -164,7 +164,7 @@ const Projects = ({ project }: Props) => {
             >
               Filter By Tags:
             </motion.div>
-            <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth">
+            <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth grid grid-cols-8 gap-2">
               {techList.map((tech, index) => (
                 <motion.div
                   initial={{
@@ -182,8 +182,8 @@ const Projects = ({ project }: Props) => {
                   onClick={() => addRemoveSearchItem(tech)}
                   className={`hover:cursor-pointer ${
                     searchList.includes(tech)
-                      ? `text-[#77b1f7]`
-                      : `text-white hover:text-orange-400 `
+                      ? `text-[#77b1f7] bg-[#5b5d65] rounded-xl p-1 flex justify-evenly mx-auto items-center shadow-lg`
+                      : `text-white hover:text-orange-400 bg-[#27282b] hover:bg-[#3c3d42] rounded-xl p-1 flex justify-evenly mx-auto items-center shadow-lg`
                   } `}
                   key={index}
                 >
