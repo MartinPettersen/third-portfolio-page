@@ -190,7 +190,7 @@ const Projects = ({ project }: Props) => {
                   className={`hover:cursor-pointer ${
                     searchList.includes(tech)
                       ? `text-[#77b1f7] bg-[#5b5d65] rounded-xl p-1 flex justify-evenly mx-auto items-center shadow-lg`
-                      : `text-white hover:text-orange-400 bg-[#27282b] hover:bg-[#3c3d42] rounded-xl p-1 flex justify-evenly mx-auto items-center shadow-lg`
+                      : `text-white  bg-[#27282b] hover:bg-[#27282b] rounded-xl p-1 flex justify-evenly mx-auto items-center shadow-lg hover:shiny-filter hover:tilt-filter`
                   } `}
                   key={index}
                 >
@@ -220,7 +220,7 @@ const Projects = ({ project }: Props) => {
                 ? "opacity-5"
                 : "opacity-30 hover:opacity-80"
             }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
-          >
+          > 
             {">"}
           </div>
         </motion.div>

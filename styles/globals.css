@@ -57,8 +57,23 @@
         
     }
 
-    .shiny_nav {
-        background:radial-gradient(circle closest-side, #ce49a8, transparent);
+    .shiny-filter {
+        position: relative;
+        overflow: hidden;    
+    }
+    .shiny-filter::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        left: var(--x);
+        top: var(--y);
+        height: 100px;
+        opacity: 0.2;
+        scale: 1.1;
+        background:radial-gradient(circle closest-side, #49cea8, transparent);
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+       
     }
 
     .tilt {
@@ -67,6 +82,15 @@
         scale: 1.02;
         perspective: 500px;
         transform: rotateX(var(--xR)) rotateY(var(--yR));
+
+    }
+
+    .tilt-filter {
+        transition: all 0.0s ease;
+        cursor: pointer;
+        scale: 1.04;
+        perspective: 100px;
+        transform: rotateX(var(--x)) rotateY(var(--y));
 
     }
 }
