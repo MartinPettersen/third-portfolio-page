@@ -22,7 +22,9 @@ const Projects = ({ project }: Props) => {
 
   const getTech = () => {
     const tempList: string[] = [];
-    return project.map((project: ProjectType) => tempList.concat(project.tech)).flat();
+    return project
+      .map((project: ProjectType) => tempList.concat(project.tech))
+      .flat();
   };
 
   const projectFilter = (pro: ProjectType) => {
@@ -144,7 +146,7 @@ const Projects = ({ project }: Props) => {
               <></>
             )}
           </div>
-          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center opacity-50 hover:opacity-100">
+          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center ">
             <motion.div
               initial={{
                 y: 500,
@@ -211,7 +213,7 @@ const Projects = ({ project }: Props) => {
                 ? "opacity-5"
                 : "opacity-30 hover:opacity-80"
             }  hover:text-orange-400 text-9xl hover:cursor-pointer`}
-          > 
+          >
             {">"}
           </div>
         </motion.div>

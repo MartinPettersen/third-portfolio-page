@@ -1,15 +1,11 @@
 import React, {MouseEvent} from "react";
 import { motion } from "framer-motion";
 import { ProjectType } from "../../typedefinition";
-import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "../../sanity";
-import LinkButton from "./LinkButton";
-import GreyButton from "./GreyButton";
 import TechPlacard from "./TechPlacard";
 import { useEffect, useState } from "react";
 import ViewProject from "./ViewProject";
-import { useTypewriter } from "react-simple-typewriter";
 
 type Props = {
   project: ProjectType;

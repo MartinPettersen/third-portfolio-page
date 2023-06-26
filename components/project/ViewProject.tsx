@@ -1,7 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ProjectType } from "../../typedefinition";
-import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "../../sanity";
 import LinkButton from "./LinkButton";

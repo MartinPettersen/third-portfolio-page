@@ -1,6 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useTypewriter } from "react-simple-typewriter";
 import AnimatedNavButton from "./Navbar/AnimatedNavButton";
 import AnimatedLogo from "./Navbar/AnimatedLogo";
 import { ProjectType } from "../typedefinition";
@@ -20,7 +18,6 @@ const Navbar = ({ project }: Props) => {
   return (
     <nav className="sticky top-0 flex items-start justify-between max-w-7xl mx-auto z-20  xl:items-center p-6 ">
       <AnimatedLogo project={project} />
-      {/* navbuttons below */}
       <div className="flex flex-row items-center ">
         <AnimatedNavButton
           delay={0.3}
@@ -43,15 +40,7 @@ const Navbar = ({ project }: Props) => {
         >
           Education
         </AnimatedNavButton>
-        {/*
-        <Link href="#blog">
-          <button className="navButton">Blog</button>
-        </Link>
         
-        <Link href="#contact">
-          <button className="navButton">contact</button>
-        </Link>
-      */}
       </div>
     </nav>
   );

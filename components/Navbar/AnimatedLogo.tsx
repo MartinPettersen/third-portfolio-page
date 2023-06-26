@@ -19,7 +19,6 @@ const AnimatedLogo = ({ project }: Props) => {
   useEffect(() => {
     setTechList([... new Set(getTech())]);
 
-    // setTechList(techList.concat(getTech()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
