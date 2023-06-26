@@ -153,7 +153,7 @@ const Projects = ({ project }: Props) => {
               <></>
             )}
           </div>
-          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center">
+          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center opacity-50 hover:opacity-100">
             <motion.div
               initial={{
                 y: 500,
