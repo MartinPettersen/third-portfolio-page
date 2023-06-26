@@ -1,4 +1,4 @@
-import React from "react";
+import React, {MouseEvent} from "react";
 import { motion } from "framer-motion";
 import { ProjectType } from "../../typedefinition";
 import Link from "next/link";
@@ -51,7 +51,7 @@ const Project = ({ project, delay }: Props) => {
       const x2 = e.layerX; // tilt
       const y2 = e.layerY; // tilt
       const multiplier = 40; // tilt
-
+      
       //update scrolling
 
       const width = 400; // tilt

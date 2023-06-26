@@ -10,13 +10,10 @@ type Props = {
 const AnimatedLogo = ({ project }: Props) => {
   const [techList, setTechList] = useState([""]);
 
-  const getUnique = (value: any, index: any, array: any) => {
-    return array.indexOf(value) === index;
-  };
 
   const getTech = () => {
-    const tempList: any = [];
-    return project.map((project: any) => tempList.concat(project.tech)).flat();
+    const tempList: string[] = [];
+    return project.map((project: ProjectType) => tempList.concat(project.tech)).flat();
   };
 
   useEffect(() => {

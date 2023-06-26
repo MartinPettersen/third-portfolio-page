@@ -21,11 +21,11 @@ const Projects = ({ project }: Props) => {
   useEffect(() => {}, [upperLimit, lowerLimit]);
 
   const getTech = () => {
-    const tempList: any = [];
-    return project.map((project: any) => tempList.concat(project.tech)).flat();
+    const tempList: string[] = [];
+    return project.map((project: ProjectType) => tempList.concat(project.tech)).flat();
   };
 
-  const projectFilter = (pro: any) => {
+  const projectFilter = (pro: ProjectType) => {
     let contains = true;
     searchList.map((tech) => {
       console.log(
@@ -90,22 +90,13 @@ const Projects = ({ project }: Props) => {
     console.log(`lower ${lowerLimit}    upper ${upperLimit}`);
   };
 
-  const checkIfContains = (tech: any) => {
+  const checkIfContains = (tech: string) => {
     if (skill === "") {
       return tech;
     } else if (skill === tech) {
       return tech;
     }
   };
-  /*
-        {project.map((project: any, index: number) => (
-          <Project
-            key={project._id}
-            project={project}
-            delay={0.6 * (index + 1)}
-          />
-        ))}
-  */
   return (
     <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-col max-w-full  justify-evenly mx-auto items-center scroll-smooth ">
       <div className="h-screen w-screen flex relative overflow-hidden flex-col text-left   md:flex-row max-w-full px-10 justify-evenly mx-auto items-center scroll-smooth ">
@@ -134,7 +125,7 @@ const Projects = ({ project }: Props) => {
         <div></div>
         <div className=" flex flex-col space-y-8 snap-x snap-mandatory pt-8 pl-2 pr-2 h-full  overflow-hidden ">
           <div className=" flex space-x-4  snap-x snap-mandatory justify-evenly mx-auto items-center">
-            {projectList.map((project: any, index: number) =>
+            {projectList.map((project: ProjectType, index: number) =>
               index >= lowerLimit && index <= upperLimit ? (
                 <Project
                   key={project._id}
