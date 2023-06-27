@@ -14,6 +14,8 @@ const Projects = ({ project }: Props) => {
 
   const [searchList, setSearchList] = useState([""]);
 
+  const [hideFilter, setHideFilter] = useState(true);
+
   const [projectList, setProjectList] = useState(project);
 
   const [upperLimit, setUpperLimit] = useState(2);
@@ -146,8 +148,8 @@ const Projects = ({ project }: Props) => {
               <></>
             )}
           </div>
-          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center ">
-            <motion.div
+          { hideFilter ? <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center ">
+          <motion.div
               initial={{
                 y: 500,
                 opacity: 0,
@@ -160,9 +162,32 @@ const Projects = ({ project }: Props) => {
                 duration: 1,
                 delay: 0.6 * 4,
               }}
-              className="text-xl text-[#77b1f7]"
+              className="text-xl text-[#77b1f7] hover:cursor-pointer"
+              onClick={() => setHideFilter(!hideFilter)}
             >
-              Filter By Tags:
+              Looking for something specific? Push here to filter projects:
+            </motion.div>
+          </div>: 
+          
+          <div className="flex flex-col space-y-4  justify-evenly mx-auto items-center ">
+            <motion.div
+              initial={{
+                y: 500,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.6,
+              }}
+              className="text-xl text-[#77b1f7] hover:cursor-pointer"
+              onClick={() => setHideFilter(!hideFilter)}
+
+            >
+              Hide Filter Tags:
             </motion.div>
             <div className="flex flex-row space-x-2 justify-evenly mx-auto items-center scroll-smooth grid grid-cols-9 gap-2">
               {techList.map((tech, index) => (
@@ -177,7 +202,7 @@ const Projects = ({ project }: Props) => {
                   }}
                   transition={{
                     duration: 1,
-                    delay: 0.6 * 5 + index * 0.1,
+                    delay: index * 0.1,
                   }}
                   onClick={() => addRemoveSearchItem(tech)}
                   className={`hover:cursor-pointer ${
@@ -192,6 +217,7 @@ const Projects = ({ project }: Props) => {
               ))}
             </div>
           </div>
+          }
         </div>
         <motion.div
           initial={{
