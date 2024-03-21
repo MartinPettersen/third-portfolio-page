@@ -24,11 +24,11 @@ export default function Home({ about, education, project }: Props) {
         <title>Portfolio Page</title>
         <meta name="description" content="Portfolio Page" />
       </Head>
-      <Navbar project={project} />
-
       <section id="portfolio" className="snap-start">
-        <Projects project={project} />
+
       </section>
+      <Navbar project={project} />
+        <Projects project={project} />
       <section id="about" className="snap-center">
         <About about={about} />
       </section>
