@@ -4,7 +4,7 @@ import { groq } from "next-sanity";
 import { sanityClient } from "../../sanity";
 import { ProjectType } from '../../typedefinition';
 
-const query = groq`*[_type == "project"]`
+const query = groq`*[_type == "project"] | order(_createdAt desc)`
 
 type Data = {
   project: ProjectType[]
