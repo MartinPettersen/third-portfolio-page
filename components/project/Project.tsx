@@ -111,7 +111,7 @@ const Project = ({ project, delay }: Props) => {
                 alt="Picture of project"
                 width={500}
                 height={500}
-                className="h-32 w-64 object-cover object-center mt-3 aspect-auto shadow-lg"
+                className="h-32 w-64 object-contain object-center mt-3 aspect-auto shadow-lg"
               />
             ) : (
               <></>
