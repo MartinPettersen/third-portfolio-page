@@ -36,7 +36,7 @@ const ViewProject = ({ project, showProject, setShowProject }: Props) => {
             alt="Picture of project"
             width={800}
             height={800}
-            className="h-64 w-128 object-cover object-center mt-3 aspect-auto"
+            className="h-64 w-128 object-contain object-center mt-3 aspect-auto"
           />
         ) : (
           <></>
